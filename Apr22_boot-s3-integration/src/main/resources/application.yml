@@ -1,0 +1,25 @@
+cloud:
+  aws:
+    credentials:
+      access-key: AKIAYYGJZSOCRT7ZOSXS
+      secret-key: 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
+    region:
+      static: ap-south-1
+    stack:
+      auto: false
+
+application:
+  bucket:
+    name: mycollectionpage
+
+
+spring:
+  servlet:
+    multipart:
+      enabled: true
+      file-size-threshold: 2MB
+      max-file-size: 5MB
+      max-request-size: 10MB
+
+server:
+  port: 8090

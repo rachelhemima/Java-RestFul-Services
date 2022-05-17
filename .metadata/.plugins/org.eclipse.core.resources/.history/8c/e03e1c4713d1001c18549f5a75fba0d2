@@ -1,0 +1,39 @@
+package ai.jobiak.empapi.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import ai.jobiak.empapi.model.Customer;
+import ai.jobiak.empapi.repository.MobileRepository;
+
+@Service
+public class MobileService {
+
+	@Autowired
+	MobileRepository repo;
+
+	public Customer addMobile(Customer mobile)
+	{
+		Customer ref = repo.save(mobile);
+		return ref;
+	}
+
+
+	public Customer modifyProduct(Customer mobile) {
+		
+		return repo.save(mobile);
+	}
+
+
+	public void removeProduct(Long mobileId) {
+		repo.deleteById(mobileId);
+	}
+
+
+	public List<Customer> getAll() {
+		// TODO Auto-generated method stub
+		return repo.findAll();
+	}
+}

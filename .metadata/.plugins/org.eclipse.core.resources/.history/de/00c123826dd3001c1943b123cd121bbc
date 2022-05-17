@@ -1,0 +1,16 @@
+package ai.jobiak.lombok.model;
+
+import lombok.Setter;
+
+public class Customer 
+{
+	@Setter
+	private Long custId;
+	private String name;
+	private double balance;
+
+
+
+
+
+}

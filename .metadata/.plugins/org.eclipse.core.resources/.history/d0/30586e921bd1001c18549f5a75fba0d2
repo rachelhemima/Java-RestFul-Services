@@ -1,0 +1,54 @@
+package ai.jobiak.empapi.model;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
+public class Customer 
+{
+	@Id
+	@GeneratedValue
+	@Column(name="custid")
+	private Long cusid;
+	@Column(name="title")
+	private String name;
+	@Column(name="custid")
+	private double balance;
+	
+	public Customer()
+	{
+	}
+
+	
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public double getBalance() {
+		return balance;
+	}
+
+	public void setBalance(double balance) {
+		this.balance = balance;
+	}
+
+	public Customer(Long id, String name, double balance) {
+		super();
+		Id = id;
+		this.name = name;
+		this.balance = balance;
+	}
+
+	@Override
+	public String toString() {
+		return "Customer [Id=" + Id + ", name=" + name + ", balance=" + balance + "]";
+	}
+
+}

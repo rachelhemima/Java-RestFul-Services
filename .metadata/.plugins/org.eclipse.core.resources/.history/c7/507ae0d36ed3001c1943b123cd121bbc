@@ -1,0 +1,26 @@
+package ai.jobiak.lombok.model;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
+@AllArgsConstructor
+@ToString
+public class Customer 
+{
+	@Setter
+	@Getter
+	private Long custId;
+	@Setter
+	@Getter
+	private String name;
+	@Setter
+	@Getter
+	private double balance;
+
+
+
+
+
+}

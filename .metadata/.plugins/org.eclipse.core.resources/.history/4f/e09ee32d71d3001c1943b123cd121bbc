@@ -1,0 +1,5 @@
+package ai.jobiak.lombok.model;
+
+public class Product {
+
+}

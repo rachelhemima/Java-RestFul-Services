@@ -1,0 +1,13 @@
+package ai.jobiak.empapi.config;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+@Configuration
+public class AppCrossOriginConfig implements WebMvcConfigurer {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

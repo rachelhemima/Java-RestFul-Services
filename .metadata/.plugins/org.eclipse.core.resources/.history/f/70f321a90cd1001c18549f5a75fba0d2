@@ -1,0 +1,5 @@
+package ai.jobiak.empapi.resources;
+
+public class Product {
+
+}

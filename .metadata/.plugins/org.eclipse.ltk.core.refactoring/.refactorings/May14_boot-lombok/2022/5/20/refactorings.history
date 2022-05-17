@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename package &apos;ai.jobiak.empapi.model&apos; to &apos;ai.jobiak.lombok.model&apos;&#x0D;&#x0A;- Original project: &apos;May14_boot-lombok&apos;&#x0D;&#x0A;- Original element: &apos;May14_boot-lombok/src/main/java/ai.jobiak.empapi.model&apos;&#x0D;&#x0A;- Renamed element: &apos;May14_boot-lombok/src/main/java/ai.jobiak.lombok.model&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename package &apos;ai.jobiak.empapi.model&apos;" flags="589830" hierarchical="false" id="org.eclipse.jdt.ui.rename.package" input="/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;ai.jobiak.empapi.model" name="ai.jobiak.lombok.model" qualified="false" references="true" stamp="1652522303598" textual="false" version="1.0"/>
+</session>

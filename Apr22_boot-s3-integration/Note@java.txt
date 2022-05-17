@@ -1,0 +1,457 @@
+ Queues:
+------
+elements follows FIFO
+
+Deque:
+------
+operations happeneds at both ends
+
+collection framework:
+---------------------
+->wht services objs needs?
+->Do they need indexes?
+->do they need to be unique?
+->do they need to be sorted or ordered?
+->do they need to be synchronized or not
+->which is the backing Ds.
+->Are nulls allowed?
+
+list -index based accessing
+set-no index based ,no accessing
+
+Main functions needed to view in Collections:
+---------------------------------------------
+constructors(return type )
+methods-> 1)data addition/update/delete/contains/present
+	    2)extraction from one collection and creating another collection
+	    3)Exceptions		
+	    4)mutability
+	    5)Thread safe(single or multithreaded env)
+	    6)extendable or not
+
+Array List:
+----------
+->prsnt from java.util
+->frst class in List
+->implements lits interface and more... extends AbstractList
+->for growable in size we use AL
+->AL implements all Collection & List methods
+->Al is unsynchronized(only single env)
+
+
+ClasscastException & Type Safety
+--------------------------------
+->ClasscastException is overcomed by Generics
+
+Type Safety(lang without compile& run time excepetions)(type infurance <>symbol used to specify the type)--->2 types
+Complile time & Run time
+checks that no other types are added 
+
+HashSet Internal
+----------------
+->For every new object a new hashcode is generated 
+->Hashset allows to store any number of objects even with same constructor data
+->To override, this behaviour we need to add hashcode and equals data in Entity class
+**In Java objects are compared with or by  value i.e  by (== opertor)
+->Hashset internally uses value comparision 
+here,the equals() methods shld be overriden
+->When we override the equals() methods,it is necessary to override the hashcode() method too
+->when 2 obj have same hashcode they are of single object.
+
+
+7th March
+----------
+Lambdas:
+=>with functional programming and lambdas the code is parameterized in other words
+code goes to data.
+=>Lambda over comes the anonymous classes
+=>directly can place the data in "" when the data need to return in String.
+
+Functinal Interfaces-Only one method
+---------------------
+
+F.I ===== one abstract method
+
+->default methods are not problems for interfaces.
+->abstract method shld be must implemented,need to provide body.
+
+1.Lambda Funtion from java8
+2.FunctionalInterfaces
+3.Implementing rules In FunctionalInterface
+
+Mar 8th
+-------
+Functional interfaces:
+----------------------
+->Suppiler & Consumer can have any type...
+->instead of using array list to iterarte we use lambda
+  Predicate<Boolean>predicate=(Boolean)->{return 100< 45;};
+    System.out.println(predicate.test(true));
+    
+    Consumer<String> consumer=(String str)-> {System.out.println(str);};
+    consumer.accept("jobiak.ai");
+
+   Supplier<Double> supplier=()->Math.random();
+    System.out.println(supplier.get());
+    
+    Supplier<Integer> supplier2=()->2*2*2;
+    System.out.println(supplier2.get());
+    
+takes string and gives half the length
+=>string.thread.io
+
+Mar 9th
+---------
+Interfaces	methods
+===================
+Function--->apply()
+Predicate-->test()
+Consumer---->accept()
+Supplier---->get()
+
+Streams
+_______
+->Acesseing and Printing  data directly printing from memory.
+
+Mar10
+------
+=>Jars
+------
+1.Collect all the jars
+2.to put all your source code in proper folders
+3.compile
+4.test
+5.package it/jar it
+6.intsall-move to team repository- Artifact with some working functionality
+7.Deploy to production-going live
+
+Mar11
+-----
+=>Optional methods
+------------------
+->for Null data
+
+=>References
+------------
+->passing method as references using References in java
+->to reuse method
+
+Java7 Vs Java8 
+==============
+code  goes to method -J7
+code goes to data	 -J8
+
+@Override
+	public int compare(Object o1, Object o2) {
+		
+		 Course c1 = (Course) o1;
+		 Course c2 = (Course) o2;
+		 
+		       if(c1.getCourseId().compareTo(c2.getCourseId()) > 0)
+		    	   return 1;
+		       else if(c1.getCourseId().compareTo(c2.getCourseId()) < 0)
+		          return -1;
+		       else 
+		       return 0;
+	}
+Mar_14
+======
+JDBC
+----
+password:admin 
+username:root
+
+show databases;
+use world;
+com.mysql.cj.jdbc.Driver
+
+->here object creation is not needed.
+->we pass references.
+
+Maven creation Steps:
+
+
+>mvn archetype:generate
+>enter
+>enter
+Define value for property 'groupId': maven_java
+Define value for property 'artifactId': core_mvn
+>enter
+Define value for property 'package' maven_java: : ai.jobiak.core
+ Y: : ymvn archetype:generate
+
+Array Vs Result Set
+-------------------
+=>index of result set begins with 1.
+=>is methods always returns boolean T or Flase
+
+public class TestCsvInsert {
+
+public static void main(String[] args) throws SQLException, IOException {
+//1.Connect with Driver Manager
+		String userName = "root";
+		String password = "admin";
+		String url = "jdbc:mysql://localhost:3306/world";
+	   Connection con = DriverManager.getConnection(url,userName, password);
+			
+			  String FilePath = "courseList.csv";
+ 				int batchSize =10;
+ String sql =  "insert into courselist (CourseName,StudentName)" + " values (?, ?)";
+	            PreparedStatement statement = con.prepareStatement(sql);
+	 
+	            BufferedReader lineReader = new BufferedReader(new FileReader(FilePath));
+	            String lineText = null;
+	            int count = 0;
+	            lineReader.readLine(); // skip header line 
+	            while ((lineText = lineReader.readLine()) != null) {
+	                String[] data = lineText.split(",");
+	                String CourseName = data[0];
+	                String StudentName = data[1];	                
+	                statement.setString(1, CourseName);
+	                statement.setString(2, StudentName);
+	                statement.addBatch();	 
+	              if (count % batchSize == 0) {
+	                    statement.executeBatch();
+	                }
+	            }
+	 
+	           lineReader.close();
+	            // execute the remaining queries
+	            statement.executeBatch();
+	 			System.out.println("values Inserted");
+	            con.close();
+
+	}
+}
+
+
+Mar18
+-----
+ResultSet Attributes:
+---------------------
+changing Db dont effet the result =>called insensity
+=>without using statements and prepared statements we can use ResultSet for Insert/Update.
+
+JSP
+++++
+
+Standar Action tags:
+--------------------
+jsp:useBean.
+jsp:setProperty.
+jsp:getProperty.
+jsp:forward
+A jsp is capable of creating objects.
+
+Jsp Implict Objects:
+====================
+
+SQl Vs NoSql
+============
+->In sql the structure of table doesn't change from row to row.=>Fixed scheme
+
+->In NoSql=>No fixed can grow dynamically.
+->In Mango db 
+
+"first_name":"hemima"
+    "gender":"female"
+    "age":25 
+
+
+GIT:
+-----
+Keeps track of cahnges that are taling place on files(source code) ,
+and allows us to go back or use old versions or working code, we dont have to worry about old code.
+
+$ git add .
+$ git status
+
+Spring
+======
+>Spring is not a coding
+>Spring is used for configuration for java
+>Single Responsibility Principle
+>Using "new" is a nuisance in java which Spring says 
+
+initi=>configurable 
+
+=>Spring is non invasive
+
+public class Garden {
+
+	ArrayList<String>fruits; //dependencies in spring
+
+--------------------------------
+public class Garden {
+
+	ArrayList<String>fruits; //instance variables of Array list in OOPs
+
+**instance varaiabbles are dependencies in spring
+
+
+create array list of user defined obj,Employee
+ArrayList<Employee>emplist;
+ insert user defined objects.
+
+Attribute : autowire
+Controls whether bean properties are "autowired". This is an automagical process in which bean references 
+ don't need to be coded explicitly in the XML bean definition file, but rather the Spring container works out 
+ dependencies. There are 4 modes: 
+1. "no" The traditional Spring default. No automagical wiring. Bean 
+ references must be defined in the XML file via the <ref/> element (or "ref" attribute). We recommend this in 
+ most cases as it makes documentation more explicit. Note that this default mode also allows for annotation-
+ driven autowiring, if activated. "no" refers to externally driven autowiring only, not affecting any autowiring 
+ demands that the bean class itself expresses. 
+2. "byName" Autowiring by property name. If a bean of class 
+ Cat exposes a "dog" property, Spring will try to set this to the value of the bean "dog" in the current 
+ container. If there is no matching bean by name, nothing special happens. 
+3. "byType" Autowiring if there is 
+ exactly one bean of the property type in the container. If there is more than one, a fatal error is raised, and 
+ you cannot use byType autowiring for that bean. If there is none, nothing special happens. 
+4. "constructor" 
+ Analogous to "byType" for constructor arguments. If there is not exactly one bean of the constructor 
+ argument type in the bean factory, a fatal error is raised. Note that explicit dependencies, i.e. "property" and 
+ "constructor-arg" elements, always override autowiring. Note: This attribute will not be inherited by child 
+ bean definitions. Hence, it needs to be specified per concrete bean definition.
+Data Type : string
+Default Value : default
+Enumerated Values : 
+	- default
+	- no
+	- byName
+	- byType
+	- constructor
+
+table controller 
+table.jsp=>map tble to print 
+
+1./
+2.goto Dispacher
+
+
+1.bean autowire type and its usage
+2.Annotations @Controller ,@RequestMapping in Spring web
+3.Spring MVC workflow.
+
+Spring boot:
+------------
+starter=>used to strt spring we app:
+-----------------------------------
+<groupId>org.springframework.boot</groupId>
+<artifactId>spring-boot-starter-web</artifactId>
+
+"index.html"=>default page for web applocation
+->default landing page for all technology.
+
+Model object in Spring
+=======================	
+public String  doDelete(User user,ModelMap map)
+//model object/command  obj
+
+commandName used in Spring 
+but in replaced with modelAttribute.
+
+
+java
+speing
+spring boot
+jpa
+db
+
+Steps :
+-------
+1)
+Java->Maven->MySQL->JDBC->MVC->Spring MVC->Spring JDBC->Boot->Spring boot MVC-> Spring Data JPA
+
+1)Implementing Spring using Spring JPA
+2)Importance of index.html page,No need of View Resolver
+3)usage of  new starters Spring boot dev Tools
+
+<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.tomcat.embed</groupId>
+			<artifactId>tomcat-embed-jasper</artifactId>
+			<scope>provided</scope>
+		</dependency>
+================================
+Apr18-Validations
+------
+2 types of validations:
+
+1.Client side validation
+2.Server side validations
+
+=>Using JSR(Java Specification Requests)->we do Server side validation.
+->Spring => need Taglibs in a jsp %@taglib
+for html form =>need xmlns-Thymleaf
+
+@Get
+=>To redirect the user to signup page by instantiating the bean ,
+and send it along with the response
+->intalize the form data with model data and send to post.
+
+@Post=>receives the model object+Bean Validator/Error if this object has erros redirect to  signup page
+redirect to welcome page.
+
+MVC1
+MVC2
+
+April 19
+--------
+what was good or comfortable?
+Providing various types of knowledge feeds.
+what was fearful/scary?
+About security threats and hacking.
+Was the content easy to understand?
+User Friendly Interface view of content made easy to understand.
+
+What makes internet an internet?
+1.N/w
+2.HTTp prptocol
+3.TCP/IP
+4.HTML
+5.User agent/proxy/Broker-->Browser.
+
+Why we need browser?
+1.Used connect to a website's server and display its web pages as content.
+What it do?
+2.It takes the request and process the response  to users and provides various activities to perform.
+How it is created?
+3.Created using various web technology softwares.
+
+Can computers communicate without internet? LAN,WAN,MAN
+How to bridge the internet and the distributed systems?
+
+RestFUL Intro:
+--------------------
+->Representational state transfer (REST) is a software architectural style created for WWW.
+->A web API that obeys the REST constraints is informally described as RESTful.
+->The REST architectural style is designed for network-based applications, specifically client-server applications.
+->A resource is manipulated through hypertext representations transferred in messages between the clients and servers.
+REST is an architectural style for developing applications that can be accessed over the network.
+REST used for implementing web Applications which have stateless behaviour ,it is architectural style by  which client access using URI
+
+Apr20
+---------
+In SOAP all are in xml input and output ,no negotiation
+In web APP negotiation is avaliable
+
+spring.jpa.hibernate.ddl-auto=create
+dis: Once the application is shutdown ,for next time when we run ,the Previous table is dropped and created and inserted again
+1.To avoid is the second time use we need to comment it.
+2.Else use schema and sql.data files 
+
+default -auto 
+
+1.Usage of jpa ddl-auto attribute.
+2.performing CURD Operations using Postman
+3.Usage of @Put,@Post,@Delete,@Get Restful methods and @Service
+
+
+
+
+

@@ -1,0 +1,15 @@
+package ai.jobiak.empapi.config;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+@Configuration
+public class AppCrossOriginConfig implements WebMvcConfigurer {
+
+@Override
+public void addCrosMappings(CorsRegistry registry)
+{
+	}
+
+	}
+
+}
